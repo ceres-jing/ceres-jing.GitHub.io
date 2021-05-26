@@ -5,8 +5,9 @@ title:  Leetcode算法题 接雨水 解法总结
 ## 给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
 ![piture](/images/rainwatertrap.png)
 ### 解法一:韦恩图
- '''
- class Solution(object):
+   ```python
+    #!/usr/bin/env python3
+class Solution(object):
     def trap(self, height):
         sum_of_left, sum_of_right = 0, 0
         max_left, max_right = 0, 0
@@ -20,10 +21,13 @@ title:  Leetcode算法题 接雨水 解法总结
             sum_of_right += max_right
         volume = sum_of_left + sum_of_right - max_left * len(height) - sum(height)
         return volume
-'''
-## 解法二:单指针 暴力超时解
-'''
-class Solution:
+
+    ```
+
+### 解法二:单指针 暴力超时解
+    ```python
+    #!/usr/bin/env python
+    class Solution:
     def trap(self, height):
         ans = 0
         for i in range(len(height)):
@@ -39,9 +43,14 @@ class Solution:
             if min(max_left,max_right) > height[i]:
                 ans += min(max_left,max_right) - height[i]  
         return ans
-'''
-## 解法三：双指针
-'''
+
+    ```
+
+
+### 解法三：双指针
+
+``` python
+#!/usr/bin/env python3 
 class Solution:
     def trap(self, height):
         ans = 0
@@ -58,7 +67,7 @@ class Solution:
                 ans += rightMax - height[right]
                 right -= 1      
         return ans
-'''
+```
  **难点： 每一个位置可以积累的水量由什么确定？**
  **由 左右两边柱子的最低点与当前柱子的高度差决定**
 
